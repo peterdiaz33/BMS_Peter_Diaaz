@@ -4,8 +4,8 @@
 import asyncio
 import httpx
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
-from platform_core.config.settings import AppSettings
-from platform_core.observability.logging import get_logger
+from platform-core.config.settings import AppSettings
+from platform-core.observability.logging import get_logger
 
 settings = AppSettings(app_name="batch-reports")
 tenant = "people-analytics"  # Example tenant
