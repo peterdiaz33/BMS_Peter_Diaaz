@@ -61,5 +61,4 @@ All components will live in a single Git repository called **insights-hub**.
 - Requires discipline to maintain clear boundaries between modules.  
 - Some teams may prefer independent repos (trade-off accepted given scale and constraints).
 
-## Status
-Accepted.
+
