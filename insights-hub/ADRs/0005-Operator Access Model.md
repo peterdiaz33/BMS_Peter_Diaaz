@@ -192,5 +192,3 @@ These would be triggered by:
 
 ---
 
-## Status
-Accepted.
