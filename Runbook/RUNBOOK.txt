@@ -55,10 +55,10 @@ Here it is — clean, complete, and ready to save as:
 Code
 C:\Github\BMS_Peter_Diaaz\RUNBOOK.md
 RUNBOOK.md — Operational Guide for Insights Hub
-🔧 Overview
+# Overview
 This RUNBOOK explains how to operate, run, test, debug, and maintain the Insights Hub platform. It covers microservices, applications, batch jobs, logging, and troubleshooting.
 
-🏁 1. Starting the Platform
+ 1. Starting the Platform
 Start Auth Gateway (port 8001)
 Code
 uvicorn platform_services.auth-gateway.main:app --port 8001
@@ -119,7 +119,7 @@ Telemetry logs the event
 
 Web Insights aggregates the response
 
-📡 4. Inter-Service Communication
+ 4. Inter-Service Communication
 All apps use httpx.AsyncClient to call services:
 
 python
