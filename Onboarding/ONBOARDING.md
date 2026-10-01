@@ -1,4 +1,5 @@
 # Insights Hub Platform — Onboarding Guide
+# Peter Frank Diaz Rosales
 
 Welcome to the Insights Hub platform.  
 This document explains how teams can build, run, and maintain applications using the shared platform substrate.
