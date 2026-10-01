@@ -1,0 +1,212 @@
+1. How to start each microservice
+Auth Gateway
+
+Data Proxy
+
+Telemetry
+
+2. How to start each application
+Web Insights
+
+Batch Reports
+
+3. How to test each endpoint
+Health checks
+
+Tenant-based requests
+
+Data queries
+
+Telemetry events
+
+4. How to debug common issues
+Import errors
+
+Missing dependencies
+
+Service not responding
+
+Tenant header issues
+
+5. How to monitor logs
+Per-tenant logging
+
+Core logging
+
+Batch logging
+
+6. How to restart the platform
+Full restart
+
+Partial restart
+
+Hot reload
+
+7. Operational best practices
+Folder structure
+
+Environment variables
+
+Local development workflow
+
+#Now I will generate RUNBOOK.md for you.
+Here it is — clean, complete, and ready to save as:
+
+Code
+C:\Github\BMS_Peter_Diaaz\RUNBOOK.md
+RUNBOOK.md — Operational Guide for Insights Hub
+🔧 Overview
+This RUNBOOK explains how to operate, run, test, debug, and maintain the Insights Hub platform. It covers microservices, applications, batch jobs, logging, and troubleshooting.
+
+🏁 1. Starting the Platform
+Start Auth Gateway (port 8001)
+Code
+uvicorn platform_services.auth-gateway.main:app --port 8001
+Start Data Proxy (port 8002)
+Code
+uvicorn platform_services.data-proxy.main:app --port 8002
+Start Telemetry Service (port 8003)
+Code
+uvicorn platform_services.telemetry.main:app --port 8003
+ 2. Starting Applications
+Start Web Insights (port 9001)
+Code
+uvicorn apps.web_insights.main:app --port 9001
+Start Batch Reports
+Code
+python apps/batch-reports/main.py
+Batch Reports will:
+
+Run a job every 10 seconds
+
+Query Data Proxy
+
+Send telemetry events
+
+Log activity per tenant
+
+ 3. Testing the Platform
+Health Checks
+Auth Gateway:
+
+Code
+GET http://localhost:8001/health
+Data Proxy:
+
+Code
+GET http://localhost:8002/health
+Telemetry:
+
+Code
+GET http://localhost:8003/health
+Web Insights:
+
+Code
+GET http://localhost:9001/health
+Tenant-Based Request Example
+Code
+GET http://localhost:9001/insights
+Headers:
+  X-User: peter
+  X-Tenant: people-analytics
+Expected behavior:
+
+Auth Gateway validates the user
+
+Data Proxy returns mock data
+
+Telemetry logs the event
+
+Web Insights aggregates the response
+
+📡 4. Inter-Service Communication
+All apps use httpx.AsyncClient to call services:
+
+python
+await client.get("http://localhost:8001/validate")
+await client.post("http://localhost:8002/query", json={...})
+await client.post("http://localhost:8003/log", json={...})
+ 5. Logging & Monitoring
+Per-Tenant Logging
+Logs are generated using:
+
+Code
+get_logger(app_name, tenant)
+This produces logs like:
+
+Code
+2026-10-01 12:00 - web_insights.people-analytics - INFO - Fetching insights
+Batch Logging
+Batch jobs log:
+
+Start of job
+
+Data Proxy response
+
+Telemetry event
+
+Completion of job
+
+6. Troubleshooting
+Import Errors
+Most common cause:
+
+Running commands outside project root
+
+Fix:
+
+Code
+cd C:\Github\BMS_Peter_Diaaz
+Missing Dependencies
+Install:
+
+Code
+pip install fastapi uvicorn httpx apscheduler typer
+Service Not Responding
+Check:
+
+Correct port
+
+Correct service running
+
+No typos in URL
+
+Tenant Not Detected
+Ensure headers:
+
+Code
+X-User: <user>
+X-Tenant: <tenant>
+7. Restarting the Platform
+Restart All Services
+Code
+Ctrl + C
+uvicorn platform_services.auth-gateway.main:app --port 8001
+uvicorn platform_services.data-proxy.main:app --port 8002
+uvicorn platform_services.telemetry.main:app --port 8003
+Restart Web Insights
+Code
+Ctrl + C
+uvicorn apps.web_insights.main:app --port 9001
+Restart Batch Reports
+Code
+Ctrl + C
+python apps/batch-reports/main.py
+8. Development Workflow
+Start all microservices
+
+Start Web Insights
+
+Start Batch Reports
+
+Test endpoints
+
+Check logs
+
+Commit changes
+
+Update ADRs if architecture changes
+
+Final Notes
+The platform is now fully operational.
+This RUNBOOK ensures any developer can run, test, and maintain the system confidently.
