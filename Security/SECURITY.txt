@@ -209,3 +209,38 @@ Multi‑tenant
 Easy to extend
 
 Suitable for internal environments
+## Others
+## Secure Product Development
+
+- Security Requirements
+- Threat Modeling
+- Static Analysis
+- Composition Analysis
+- Supplier Assessment
+- Assurance Testing
+- Security Attestation
+- Hardening Guide
+
+## Secure Operations Servicing
+
+- Secure Release & Distribution
+- Secure Configuration
+- Security Monitoring
+- Vulnerability Management
+- Incident Response
+- Secure Patching & Distribution
+- Secure Remote Access
+- Decommissioning & End of Life
+
+# Supply Chain
+
+- Cybersecurity Supply Chain Risk Management Practices for Systems and Organizations: https://csrc.nist.gov/pubs/sp/800/161/r1/final
+- SLSA (Supply-chain Levels for Software Artifacts): https://slsa.dev/
+
+# Compliance
+
+- CRA: https://www.cyberresilienceact.eu/compliance-matrix.html
+
+# Cloud Environment Hardening and Guidance
+
+- Essential Security Requirements and impementation Guidance: https://cc-in-the-cloud.github.io/
